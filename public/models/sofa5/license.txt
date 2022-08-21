@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sofa grey fabric
+* source:	https://sketchfab.com/3d-models/sofa-grey-fabric-7f8cca8fe9d8449684b1dfbb410af8c6
+* author:	charles.cla (https://sketchfab.com/charles.cla)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sofa grey fabric" (https://sketchfab.com/3d-models/sofa-grey-fabric-7f8cca8fe9d8449684b1dfbb410af8c6) by charles.cla (https://sketchfab.com/charles.cla) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

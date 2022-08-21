@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sofa
+* source:	https://sketchfab.com/3d-models/sofa-92184d1f1c21498a8bd7b5a3f5d9635b
+* author:	VirtualBG (https://sketchfab.com/undereality)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sofa" (https://sketchfab.com/3d-models/sofa-92184d1f1c21498a8bd7b5a3f5d9635b) by VirtualBG (https://sketchfab.com/undereality) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

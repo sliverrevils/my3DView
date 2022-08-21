@@ -1,0 +1,11 @@
+Model Information:
+* title:	SOFA-03
+* source:	https://sketchfab.com/3d-models/sofa-03-bf892d6b84944ed4ba464e7b368f8027
+* author:	杭州维界科技有限公司 (https://sketchfab.com/zhousongjiang)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "SOFA-03" (https://sketchfab.com/3d-models/sofa-03-bf892d6b84944ed4ba464e7b368f8027) by 杭州维界科技有限公司 (https://sketchfab.com/zhousongjiang) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
