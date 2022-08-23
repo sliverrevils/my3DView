@@ -34,12 +34,13 @@ export default function My3DView() {
     }, [file])
 
     const rendererRef: { current: THREE.WebGL1Renderer | undefined } = useRef();
-    const directionalLightRef: { current: THREE.DirectionalLight | undefined } = useRef();
+   
     const cameraRef: { current: THREE.Camera | undefined } = useRef();
     const sceneRef: { current: THREE.Scene | undefined } = useRef();
 
-    const [light, setLight] = useState('');
-
+    //light
+    const [light, setLight] = useState('white');
+    const directionalLightRef: { current: THREE.DirectionalLight | undefined } = useRef();
     useEffect(() => {
         if (sceneRef.current && light) {
             if (directionalLightRef.current) sceneRef.current?.remove(directionalLightRef.current)
@@ -49,7 +50,23 @@ export default function My3DView() {
             sceneRef.current!.add(directionalLightRef.current);
         }
 
-    }, [light])
+    }, [light]);
+    //help grid
+    const [grid,setGrid]=useState(false);
+    const gridRf:{current:THREE.GridHelper|undefined}=useRef();
+    useEffect(()=>{
+        if(grid){
+               //ADD HELP GRID  
+               gridRf.current=new THREE.GridHelper(10, 10)
+               sceneRef.current!.add(gridRf.current);  
+               
+        }else{
+            if(gridRf.current){
+                sceneRef.current!.remove(gridRf.current);   
+            }
+        }
+    },[grid])
+
 
     useEffect(() => {
 
@@ -63,7 +80,11 @@ export default function My3DView() {
             //SCENE
             sceneRef.current = new THREE.Scene();
             //sceneRef.current.background = new THREE.Color(0xdddddd);
-            //sceneRef.current.add(new THREE.GridHelper(10, 10)) // ДОБАВЛЕНИЕ СЕТКИ          
+
+            // //ADD HELP GRID  
+            // const grid=new THREE.GridHelper(10, 10)
+            // sceneRef.current.add(grid);  
+            // sceneRef.current.remove(grid);        
 
             //CAMERA
             const { width, height } = canvasDiv.current!.getBoundingClientRect();
@@ -73,24 +94,20 @@ export default function My3DView() {
             cameraRef.current.position.set(0, 0, 6);
             // cameraRef.current.lookAt(0, 22, 1);     
 
-            //LIGHT
-            // let directionalLight = new THREE.DirectionalLight('white', 3);
-            // directionalLight.position.set(12, 12, 12);
-            // directionalLight.castShadow = true;
-            // sceneRef.current.add(directionalLight);
+            // //LIGHT
+            // directionalLightRef.current = new THREE.DirectionalLight('white', 3);
+            // directionalLightRef.current.position.set(12, 12, 12);
+            // directionalLightRef.current.castShadow = true;
+            // sceneRef.current.add(directionalLightRef.current);
+            // //sceneRef.current.remove(directionalLight);
 
-            directionalLightRef.current = new THREE.DirectionalLight('white', 3);
-            directionalLightRef.current.position.set(12, 12, 12);
-            directionalLightRef.current.castShadow = true;
-            sceneRef.current.add(directionalLightRef.current);
-            //sceneRef.current.remove(directionalLight);
-
+            //H LITE
             hlite = new THREE.AmbientLight(0x404040, 1);
             sceneRef.current.add(hlite);
 
             rendererRef.current = new THREE.WebGL1Renderer({ antialias: true, alpha: true });
             rendererRef.current.setSize(window.innerWidth, window.innerHeight);
-            // renderer.setSize(width, height+50);
+            
 
 
             //CONTROL
@@ -109,23 +126,23 @@ export default function My3DView() {
 
             //LOADER gLTF
             loader = new GLTFLoader();
-            setLoading(true);
-            loader.load(process.env.PUBLIC_URL + _MODEL, (gltf: any) => {
-                setLoading(false);
+           
+            loader.load(process.env.PUBLIC_URL + _MODEL, (gltf: any) => {                
                 sceneRef.current!.add(gltf.scene);
                 const model = gltf.scene.children[0];
-                model.position.set(0, -.5, 0);
+                model.position.set(0, 0, 0);
                 model.scale.set(1, 1, 1);
-
                 render();
             })
             //RENDER
             function render() {
+                setLoading(true);
                 if (render3d.current && sceneRef.current) {
                     rendererRef.current!.render(sceneRef.current, cameraRef.current as Camera);
                     requestAnimationFrame(render);
                     control.update();
                     console.log('render 3D');
+                    setLoading(false);
                 }
             }
         }
@@ -147,7 +164,7 @@ export default function My3DView() {
 
     return (
         <>
-            <LeftMenu {...{ setFile, setLight,light }} />
+            <LeftMenu {...{ setFile, setLight,light ,setGrid}} />
             <div className="Item">
                 {loading && <div className='Item__loading'>Loading</div>}
                 <div className='Item__div-canvas' ref={canvasDiv} >
