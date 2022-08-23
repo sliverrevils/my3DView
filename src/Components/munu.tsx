@@ -1,16 +1,25 @@
 import { useEffect, useState } from "react"
 
 interface ILeftMenuProps {
-    setFile: React.Dispatch<React.SetStateAction<string>>
-    setLight: React.Dispatch<React.SetStateAction<string>>
-    light: string
-    setGrid: React.Dispatch<React.SetStateAction<boolean>>
+    setFile: React.Dispatch<React.SetStateAction<string>>;
+    setLight: React.Dispatch<React.SetStateAction<string>>;
+    light: string;
+    setGrid: React.Dispatch<React.SetStateAction<boolean>>;
+    setHlight: React.Dispatch<React.SetStateAction<{
+        color: string;
+        intansity: number;
+    }>>;
+    hlite:{
+        color: string;
+        intansity: number;
+    };
+    grid:boolean;
 }
 
 export default function LeftMenu(props: ILeftMenuProps) {
     const [menu, setMenu] = useState(true);
 
-    const { setFile, setLight, light, setGrid } = props;
+    const { setFile, setLight, light, setGrid ,setHlight,hlite,grid} = props;
 
     useEffect(() => { console.log(light) }, [light])
 
@@ -34,11 +43,24 @@ export default function LeftMenu(props: ILeftMenuProps) {
                 </label>
 
                 <label>
-                    <span className="material-icons btn" style={{ color: light || 'white' }} >wb_incandescent</span>
+                    <span className="material-icons btn" style={{ color: light || 'white' }} >lightbulb_circle</span>
                     <input type={'color'} onChange={event => setLight(event.target.value)} hidden />
                 </label>
+                
+                <div  onClick={()=>setGrid(state=>!state)}>
+                    {
+                        grid
+                        ?<span className="material-icons btn">grid_off</span>                        
+                        :<span className="material-icons btn">grid_on</span>
+                    }                
+                </div>
+                
                 <div>
-                <span className="material-icons btn"  onClick={()=>setGrid(state=>!state)}>grid_on</span>
+                <label>                    
+                <span className="material-icons btn" style={{color:hlite.color}}>highlight</span>
+                    <input type={'color'} onChange={event=>setHlight((state:any)=>({...state,color:event.target.value}))} hidden/>
+                </label>
+                <input type={'range'} onChange={event=>setHlight((state:any)=>({...state,intansity:+event.target.value/10}))} min={1} max={50} value={hlite.intansity*10}/>
                 </div>
                
 
