@@ -11,6 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+* {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+
 .Item {
   background-color: rgb(0, 0, 0);
   display: flex;
@@ -59,12 +70,56 @@ code {
  
 }
 
-* {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none;   /* Chrome/Safari/Opera */
-  -khtml-user-select: none;    /* Konqueror */
-  -moz-user-select: none;      /* Firefox */
-  -ms-user-select: none;       /* Internet Explorer/Edge */
-  user-select: none;           /* Non-prefixed version, currently
-                                  not supported by any browser */
+.Left-menu{
+  background-color: rgba(102, 151, 175, 0.4);
+  width: 150px;
+  height: 100vh;
+  position: absolute;  
+  z-index: 20;
+
+  left:-155px;
+  transition: all 300ms ease-in-out;
+
+  border-radius: 0 30px 30px 0;
+  border-right: 4px solid rgba(131, 173, 235, 0.4);
+
+  box-shadow: 5px 5px 10px rgba(0, 0, 0,.2);
+
+  filter: saturate(150%) contrast(150%);
+
+  &__close{
+    position: absolute;
+    right: 0;
+    transform: translateX(90px);    
+    padding: 5px;
+    cursor: pointer;
+  }
+  &__buttons{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+}
+.Left-menu.active{
+  left:0;
+}
+
+.Left-menu.active .Left-menu__close{  
+  transform: translateX(0px); 
+  color: rgb(206, 206, 206);
+  font-weight: 800;
+}
+
+.Left-menu .material-icons{
+  font-size: 50px;
+  cursor: pointer;
+  margin: 5px; 
+  border-radius: 10px;
+}
+
+.Left-menu .material-icons.btn{
+  background-color: rgba(67, 150, 234,.1);
+  padding: 5px;
+  box-shadow: 3px 3px 5px rgba(49, 124, 161, 0.596), -2px -2px 3px rgb(98, 180, 242);
+  text-shadow: 1px 2px 2px rgb(137, 136, 136);
 }
